@@ -1,0 +1,46 @@
+class Kid
+  attr_accessor :name, :favorite_toy, :backpack
+
+  def initialize(name, favorite_toy)
+    @name = name
+    @favorite_toy = favorite_toy
+    @backpack = []
+  end
+
+  def take_toy(toy)
+    if toy == favorite_toy
+      backpack << toy
+      puts "#{name} gosta de #{toy} e pegou para si."
+    else
+      puts "#{name} não gosta de #{toy} e vai repassar este brinquedo."
+    end
+  end
+end
+
+class Toy
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+toys = [
+  Toy.new("ARANHA"),
+  Toy.new("SAPO"),
+  Toy.new("DENTADURA"),
+  Toy.new("FANTASMINHA"),
+  Toy.new("BRUXINHA")
+]
+
+kids = [
+  Kid.new("Samuel", toys[1]),
+  Kid.new("Franklin", toys[0]),
+  Kid.new("Hellen", toys[3]),
+  Kid.new("JC", toys[4]),
+  Kid.new("Daniel", toys[2])
+]
+
+toys.each do |toy|
+  kids.each { |kid| kid.take_toy(toy) }
+end
